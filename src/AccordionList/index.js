@@ -5,21 +5,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 function AccordionList(props) {
+    const [openItems, toggleOpen] = useState({});
+
+    function toggleOpenItem (id) {
+        let value = !openItems[id];
+        toggleOpen({...openItems, [id]:value});
+    }
+
     return (
         <div className={style.container}>
-            {props.beers? props.beers.map(beer=> 
-                <ListItem beer = {beer}/>
+            {props.beers? props.beers.map( beer => 
+                <ListItem beer = {beer} isOpen={!!openItems[beer.id]} toggleOpen={()=>toggleOpenItem(beer.id)}/>
             ):null}
+            <button className={style.closeAll} onClick={() => toggleOpen({})}>Close all</button>
         </div>
     );
 }
 
 function ListItem(props) {
-    const [open, toggleOpen] = useState(false);
     return (
         <div className={style.listItem}>
-            <div className={style.name} onClick={()=>toggleOpen(!open)}>{props.beer.name}{open?<FontAwesomeIcon icon={faMinusCircle} />:<FontAwesomeIcon icon={faPlusCircle} />}</div>
-            {open?
+            <div className={style.name} onClick={props.toggleOpen}>{props.beer.name}{props.isOpen?<FontAwesomeIcon icon={faMinusCircle} />:<FontAwesomeIcon icon={faPlusCircle} />}</div>
+            {props.isOpen?
                 <div>
                     <p>"{props.beer.tagline}"</p>
                     <p>{props.beer.description}</p>
