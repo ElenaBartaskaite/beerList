@@ -2,20 +2,58 @@
     background-color: white;
     border-radius: 10px;
     margin: 15px 0;
+    padding: 5px 0;
 }
 
 .listItem {
-    margin: 5px 15px;
+    margin: 0 15px;
+        
+    .name {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        padding: 15px 10px 10px 10px;
+        display: flex;
+        justify-content: space-between;
+
+        &:hover {
+            background-color: orange;
+        }
+    }
+
+    &:last-of-type {
+        .name {
+            border: none;
+        }
+
+        .description {
+            border-top: 1px solid rgba(0, 0, 0, 0.3);
+            border-bottom: none;
+        }
+    }
 }
 
-.name {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    padding: 10px 10px 5px 10px;
-    display: flex;
-    justify-content: space-between;
+.selectedName {
+    @extend .name;
+    font-weight: bold;
+}
 
-    &:hover {
-        background-color: orange;
+.description {
+    padding: 5px 10px 5px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    position: relative;
+
+    .tagline {
+        font-family: 'Quintessential', cursive;
+        font-size: 24px;
+        margin-right: 160px;
+    }
+
+    .drunkPrecent {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        font-size: 40px;
+        margin: 0;
+        font-weight: bold;
     }
 }
 

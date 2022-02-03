@@ -1,14 +1,52 @@
 import style from './style.module.scss';
+import React, { useState } from 'react';
 
-function Header() {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSort, faSortDown, faSortUp, faBars, faThLarge } from '@fortawesome/free-solid-svg-icons';
+
+const notSorted = <FontAwesomeIcon icon={faSort} />;
+const sortedDown = <FontAwesomeIcon icon={faSortDown} />;
+const sortedUp = <FontAwesomeIcon icon={faSortUp} />;
+
+function Header(props) {
+    const [nameSortIcon, updateNameIcon] = useState(notSorted);
+    const [drunkSortIcon, updateDrunkIcon] = useState(notSorted);
+
+    function sortByName(){
+        if(nameSortIcon === sortedDown) {
+            updateNameIcon(sortedUp);
+            props.sortByName(-1);
+        } else {
+            updateNameIcon(sortedDown);
+            props.sortByName(1);
+        }
+        updateDrunkIcon(notSorted);
+    }
+
+    function sortByDrunk(){
+        if(drunkSortIcon === sortedDown) {
+            updateDrunkIcon(sortedUp);
+            props.sortByDrunk(-1);
+        } else {
+            updateDrunkIcon(sortedDown);
+            props.sortByDrunk(1);
+        }
+
+        updateNameIcon(notSorted);
+    }
+
     return (
         <div>
             <h1 className={style.title}>Beer list</h1>
             <div className={style.navigation}>
-                <button>Sort by: Name</button>
-                <button>Sort by: Drunk</button>
-                <button>List</button>
-                <button>Grid</button>
+                <span>
+                    <button onClick={sortByName}>{nameSortIcon} Name</button>
+                    <button onClick={sortByDrunk}>{drunkSortIcon} Drunk</button>
+                </span>
+                <span>
+                    <button><FontAwesomeIcon icon={faBars} /></button>
+                    <button><FontAwesomeIcon icon={faThLarge} /></button>
+                </span>
             </div>
 	    </div>
     );

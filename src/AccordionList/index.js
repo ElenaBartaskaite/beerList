@@ -2,7 +2,7 @@ import style from './style.module.scss';
 import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faMinusCircle, faBeer } from '@fortawesome/free-solid-svg-icons';
 
 function AccordionList(props) {
     const [openItems, toggleOpen] = useState({});
@@ -25,13 +25,13 @@ function AccordionList(props) {
 function ListItem(props) {
     return (
         <div className={style.listItem}>
-            <div className={style.name} onClick={props.toggleOpen}>{props.beer.name}{props.isOpen?<FontAwesomeIcon icon={faMinusCircle} />:<FontAwesomeIcon icon={faPlusCircle} />}</div>
+            <div className={props.isOpen?style.selectedName:style.name} onClick={props.toggleOpen}>{props.beer.name}{props.isOpen?<FontAwesomeIcon icon={faMinusCircle} />:<FontAwesomeIcon icon={faPlusCircle} />}</div>
             {props.isOpen?
-                <div>
-                    <p>"{props.beer.tagline}"</p>
+                <div className={style.description}>
+                    <p className={style.tagline}>"{props.beer.tagline}"</p>
                     <p>{props.beer.description}</p>
-                    <p>First brewed: {props.beer.first_brewed}</p>
-                    <p>{props.beer.abv}%</p>
+                    <p>First brewed: <b>{props.beer.first_brewed}</b></p>
+                    <p className={style.drunkPrecent}>{props.beer.abv}% <FontAwesomeIcon icon={faBeer} /></p>
                 </div>
             :null}
             
