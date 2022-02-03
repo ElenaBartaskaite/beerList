@@ -1,6 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import AccordionList from "./AccordionList";
+import "./App.css";
+import BackgroundAnimation from './BackgroundAnimation';
+import Header from './Header';
 
 const url = "https://api.punkapi.com/v2/beers"; 
 
@@ -17,7 +19,11 @@ function App() {
 
   return (
     <div >
-      <AccordionList beers={beers}/>
+      <BackgroundAnimation/>
+      <div className='content'>
+        <Header/>
+        <AccordionList beers={beers}/>
+      </div>
     </div>
   );
 }

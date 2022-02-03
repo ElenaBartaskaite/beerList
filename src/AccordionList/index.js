@@ -2,8 +2,8 @@ import style from './style.module.scss';
 
 function AccordionList(props) {
     return (
-        <div className={style.test}>
-            {props.beers? props.beers.map(beer=> <p>{beer.name}</p>):null}
+        <div className={style.container}>
+            {props.beers? props.beers.map(beer=> <div className={style.listItem}>{beer.name}</div>):null}
         </div>
     );
 }
