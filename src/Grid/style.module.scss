@@ -1,0 +1,42 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    
+    @media screen and (max-width: 760px) {
+        grid-template-columns: 1fr 1fr;
+    }  
+
+    @media screen and (max-width: 520px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    position: relative;
+    text-decoration: none;
+    color: black;
+}
+
+.name {
+    font-weight: bold;
+    margin: 5px 60px 5px 0;
+}
+
+.description {
+    padding: 5px 0 5px 0;
+
+    .drunkPrecent {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        font-size: 24px;
+        margin: 0;
+        font-weight: bold;
+    }
+}

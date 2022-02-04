@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Quintessential&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  background: rgb(255,220,17);
+  background: linear-gradient(0deg, rgba(255,220,17,1) 0%, rgba(255,180,1,1) 63%, rgba(255,179,0,1) 96%); 
+  overflow-x: hidden;
+}
+
+.content {
+  max-width: 700px;
+  margin: auto;
+
+  @media screen and (max-width: 760px) {
+    margin: 0 30px;
+  }
+}

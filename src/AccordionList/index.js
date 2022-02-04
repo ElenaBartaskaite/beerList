@@ -17,7 +17,7 @@ function AccordionList(props) {
             {props.beers? props.beers.map( beer => 
                 <ListItem beer = {beer} isOpen={!!openItems[beer.id]} toggleOpen={()=>toggleOpenItem(beer.id)}/>
             ):null}
-            <button className={style.closeAll} onClick={() => toggleOpen({})}>Close all</button>
+            {Object.entries(openItems).length === 0? null : <button className={style.closeAll} onClick={() => toggleOpen({})}>Close all</button>}
         </div>
     );
 }

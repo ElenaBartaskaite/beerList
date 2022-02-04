@@ -44,8 +44,8 @@ function Header(props) {
                     <button onClick={sortByDrunk}>{drunkSortIcon} Drunk</button>
                 </span>
                 <span>
-                    <button><FontAwesomeIcon icon={faBars} /></button>
-                    <button><FontAwesomeIcon icon={faThLarge} /></button>
+                    <button className={props.listType? style.chosen:null} onClick={()=>props.chooseListType(true)}><FontAwesomeIcon icon={faBars} /></button>
+                    <button className={props.listType? null:style.chosen} onClick={()=>props.chooseListType(false)}><FontAwesomeIcon icon={faThLarge} /></button>
                 </span>
             </div>
 	    </div>
